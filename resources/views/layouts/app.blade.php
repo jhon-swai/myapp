@@ -18,6 +18,24 @@
     </main>
     @include('inc.footer')
     <script src="{{asset('js/app.js')}}"></script> {{-- <- bootstrap and jquery --}}
+    
+    @if(session('status')) {{-- <- If session key exists --}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('status')}} {{-- <- Display the session value --}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    <script>
+        //close the alert after 3 seconds.
+        $(document).ready(function(){
+        setTimeout(function() {
+            $(".alert").alert('close');
+        }, 3000);
+        });
+    </script>
 
 </body>
 </html>

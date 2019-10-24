@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+// importing Todo class
+use App\Todo;
+
 use Illuminate\Http\Request;
 
 class TodosController extends Controller
@@ -13,7 +16,9 @@ class TodosController extends Controller
      */
     public function index()
     {
-        //
+        // Retriving all the todos with Todo model
+        $todos = Todo::orderBy('created_at','desc')->paginate(8);
+        return view('todos.index',['todos'=>$todos,]);
     }
 
     /**
@@ -23,7 +28,7 @@ class TodosController extends Controller
      */
     public function create()
     {
-        //
+        return view('todos.create');
     }
 
     /**
@@ -34,7 +39,26 @@ class TodosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation rules
+        $rules = [
+            'title' => 'required|string|unique:todos,title|min:2|max:191',
+            'body'  => 'required|string|min:5|max:1000',
+        ];
+        //custom validation error messages
+        $messages = [
+        'title.unique' => 'Todo title should be unique', //syntax: field_name.rule
+        ];
+        //validate the form data
+        $request->validate($rules,$messages);
+        //create a todo
+        $todo = new Todo;
+        $todo->title = $request->title;
+        $todo->body = $request->body;
+        $todo->save();
+        //Redirect to specified route with flash message
+        return redirect()
+            ->route('todos.index')
+            ->with('status','created a new Todo');
     }
 
     /**

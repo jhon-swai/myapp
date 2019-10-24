@@ -11,8 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// The front pages for index and about
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/about','PagesController@about')->name('pages.about');
+
+// The todos pages routes
+Route::resource('/todos','TodosController');
