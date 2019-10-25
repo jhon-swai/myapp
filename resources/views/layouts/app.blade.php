@@ -7,6 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/app.css')}}"> {{-- <- bootstrap css --}}
     <title>@yield('title','Laravel 6.4 Basics')</title>
+
+
+<style>
+    .alert{
+        z-index: 99;
+        top: 60px;
+        right:18px;
+        min-width:30%;
+        position: fixed;
+        animation: slide 0.5s forwards;
+    }
+    @keyframes slide {
+        100% { top: 30px; }
+    }
+    @media screen and (max-width: 668px) {
+        .alert{ /* center the alert on small screens */
+            left: 10px;
+            right: 10px; 
+        }
+    }
+</style>
+
 </head>
 <body>
     {{-- That's how you write a comment in blade --}}
