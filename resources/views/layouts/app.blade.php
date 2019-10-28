@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/app.css')}}"> {{-- <- bootstrap css --}}
     <title>@yield('title','Laravel 6.4 Basics')</title>
-
-
 <style>
     .alert{
         z-index: 99;

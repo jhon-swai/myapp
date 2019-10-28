@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+  Create table
+@endsection
 @section('content')
     <h3 class='text-center'>Create Todo</h3>
     <form action="{{route('todos.store')}}" method="POST">
@@ -23,5 +26,5 @@
             <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
-    
+
 @endsection

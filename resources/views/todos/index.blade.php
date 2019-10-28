@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+  Todo list  
+@endsection
 @section('content')
 <h2 class="text-center">All Todos</h2>
 <ul class="list-group py-3 mb-3">
@@ -10,13 +13,13 @@
         {{-- <small class="float-right">{{$todo->created_at->diffForHumans()}}</small> --}}
         <a href="{{route('todos.show',$todo->id)}}">Read more</a>
         </li>
-        @empty 
+        @empty
             <h4 class="text-center">No todos found</h4>
-        
+
     @endforelse
 </ul>
 <div class="d-flex justify-content-center">
     {{$todos->links('vendor.pagination.bootstrap-4')}}
 </div>
-    
+
 @endsection

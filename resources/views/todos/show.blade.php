@@ -1,5 +1,7 @@
-
 @extends('layouts.app')
+@section('title')
+  Todo list
+@endsection
 @section('content')
     <h3 class="text-center">{{$todo->title}}</h3>
     <p>{{$todo->body}}</p>
